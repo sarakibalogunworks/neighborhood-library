@@ -43,7 +43,18 @@ public class TheLibraryApp {
 
             String pick = scanner.nextLine();
 
-            if
+            if (pick.equals("1")) {
+                System.out.println("\nBooks you can borrow:");
+                int avaiable = 0;
+
+                for (int i = 0; i < totalBooks; i++) {
+                    if (!shelf[i].isCheckedOut()) {
+                        System.out.println(shelf[i].getId() + " | " + shelf[i].getTitle());
+                        avaiable++;
+                    }
+                }
+
+            }
         }
 
 
