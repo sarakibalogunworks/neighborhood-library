@@ -17,7 +17,7 @@ public class TheLibraryApp {
         shelf[3] = new Book(4, "978-0-14-044913-6", "The Odyssey");
         shelf[4] = new Book(5, "978-0-14-044792-7", "Crime and Punishment");
         shelf[5] = new Book(6, "978-0-14-044917-4", "The Brothers Karamazov");
-        shelf[6] = new Book((7,"978-0-14-044118-5", "War and Peace");
+        shelf[6] = new Book(7, "978-0-14-044118-5", "War and Peace");
         shelf[7] = new Book(8, "978-0-14-044793-4", "Anna Karenina");
         shelf[8] = new Book(9, "978-0-14-143951-8", "Great Expectations");
         shelf[9] = new Book(10, "978-0-14-143960-0", "A Tale of Two Cities");
@@ -31,6 +31,20 @@ public class TheLibraryApp {
         shelf[17] = new Book(18, "978-0-14-044165-9", "The Hunchback of Notre Dame");
         shelf[18] = new Book(19, "978-0-14-143982-2", "Wuthering Heights");
         shelf[19] = new Book(20, "978-0-14-143951-8", "Jane Eyre");
+
+        boolean done = false;
+
+        while (!done) {
+            System.out.println("\n   LIBRARY   ");
+            System.out.println("1 - See available books");
+            System.out.println("2 - See checked out books");
+            System.out.println("3 - Leave");
+            System.out.println("Pick: ");
+
+            String pick = scanner.nextLine();
+
+            if
+        }
 
 
 
