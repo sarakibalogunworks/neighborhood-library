@@ -53,6 +53,16 @@ public class TheLibraryApp {
                         avaiable++;
                     }
                 }
+                if (available == 0) {
+                    System.out.println("Nothing available right now.");
+                    continue;
+                }
+                System.out.println("\nEnter ID to check out, or X to go back: ");
+                String choice = scanner.nextLine();
+
+                if (choice.equalsIgnoreCase("x")) {
+                    continue;
+                }
 
             }
         }
