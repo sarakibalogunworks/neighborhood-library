@@ -60,9 +60,46 @@ public class TheLibraryApp {
                 System.out.println("\nEnter ID to check out, or X to go back: ");
                 String choice = scanner.nextLine();
 
-                if (choice.equalsIgnoreCase("x")) {
+                if (choice.equalsIgnoreCase("X")) {
                     continue;
                 }
+                boolean isNum = true;
+                for (int i = 0; i < choice.length(); i++) {
+                    if (!Character.isDigit(choice.chartAt(i))) {
+                        isNum = false:
+                        break:
+                    }
+                }
+                if (!isNum) {
+                    System.out.println("That's not a number.");
+                    continue;
+                }
+                int bookId = Integer.parseInt(choice);
+                Book found = null;
+
+                for (int i = 0; i < totalBooks; i++) {
+                    if (shelf[i].getId() == bookId) {
+                        found = shelf[i];
+                        break;
+                    }
+                }
+                if (found == null) {
+                    System.out.println("No book with that ID.");
+                    continue;
+                }
+                if (found.isCheckedOut()) {
+                    System.out.println("Already checked out.");
+                    continue;
+                }
+                System.out.println("your name: ");
+                String person = scanner.nextLine();
+                found.checkOuut(person);
+                System.out.println("Checked out to " + person);
+
+            } else if (pick.equals("2")) {
+                System.out.println("\nChecked out books:");
+                int out = 0;
+
 
             }
         }
