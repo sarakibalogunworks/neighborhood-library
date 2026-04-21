@@ -66,8 +66,8 @@ public class TheLibraryApp {
                 boolean isNum = true;
                 for (int i = 0; i < choice.length(); i++) {
                     if (!Character.isDigit(choice.chartAt(i))) {
-                        isNum = false:
-                        break:
+                        isNum = false;
+                        break;
                     }
                 }
                 if (!isNum) {
@@ -100,6 +100,32 @@ public class TheLibraryApp {
                 System.out.println("\nChecked out books:");
                 int out = 0;
 
+                for (int i = 0; i < totalBooks; i++) {
+                    if (shelf[i].isCheckedOut()) {
+                        System.out.println(shelf[i].getId() +" | " + shelf[i].getTitle() + " | Out to: " + shelf[i].getBorrower());
+                        out++;
+                    }
+                }
+                if (out == 0) {
+                    System.out.println("All books are on shelf.");
+                    continue;
+                }
+                System.out.println("\nC to check in, X to go back: ");
+                String action = scanner.nextLine();
+
+                if (!action.equalsIgnoreCase("C")) {
+                    continue;
+                }
+                System.out.println("Book ID to check in: ");
+                String idStr = scanner.nextLine();
+
+                boolean valid = true;
+                for (int i = 0; i <  idStr.length(); i++) {
+                    if (!Character.isDigit(idStr.charAt())) {
+                        valid = false;
+                        break;
+                    }
+                }
 
             }
         }
