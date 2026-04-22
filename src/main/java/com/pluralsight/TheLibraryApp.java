@@ -38,19 +38,19 @@ public class TheLibraryApp {
             System.out.println("\n   LIBRARY   ");
             System.out.println("1 - See available books");
             System.out.println("2 - See checked out books");
-            System.out.println("3 - Leave");
+            System.out.println("3 - See You Another Time");
             System.out.println("Pick: ");
 
             String pick = scanner.nextLine();
 
             if (pick.equals("1")) {
                 System.out.println("\nBooks you can borrow:");
-                int avaiable = 0;
+                int available = 0;
 
-                for (int i = 0; i < totalBooks; i++) {
+                for (int i = 0; i < totalbooks; i++) {
                     if (!shelf[i].isCheckedOut()) {
                         System.out.println(shelf[i].getId() + " | " + shelf[i].getTitle());
-                        avaiable++;
+                        available++;
                     }
                 }
                 if (available == 0) {
@@ -65,7 +65,7 @@ public class TheLibraryApp {
                 }
                 boolean isNum = true;
                 for (int i = 0; i < choice.length(); i++) {
-                    if (!Character.isDigit(choice.chartAt(i))) {
+                    if (!Character.isDigit(choice.charAt(i))) {
                         isNum = false;
                         break;
                     }
@@ -77,7 +77,7 @@ public class TheLibraryApp {
                 int bookId = Integer.parseInt(choice);
                 Book found = null;
 
-                for (int i = 0; i < totalBooks; i++) {
+                for (int i = 0; i < totalbooks; i++) {
                     if (shelf[i].getId() == bookId) {
                         found = shelf[i];
                         break;
@@ -93,16 +93,16 @@ public class TheLibraryApp {
                 }
                 System.out.println("your name: ");
                 String person = scanner.nextLine();
-                found.checkOuut(person);
+                found.checkOut(person);
                 System.out.println("Checked out to " + person);
 
             } else if (pick.equals("2")) {
                 System.out.println("\nChecked out books:");
                 int out = 0;
 
-                for (int i = 0; i < totalBooks; i++) {
+                for (int i = 0; i < totalbooks; i++) {
                     if (shelf[i].isCheckedOut()) {
-                        System.out.println(shelf[i].getId() +" | " + shelf[i].getTitle() + " | Out to: " + shelf[i].getBorrower());
+                        System.out.println(shelf[i].getId() + " | " + shelf[i].getTitle() + " | Out to: " + shelf[i].getBorrower());
                         out++;
                     }
                 }
@@ -120,15 +120,37 @@ public class TheLibraryApp {
                 String idStr = scanner.nextLine();
 
                 boolean valid = true;
-                for (int i = 0; i <  idStr.length(); i++) {
-                    if (!Character.isDigit(idStr.charAt())) {
+                for (int i = 0; i < idStr.length(); i++) {
+                    if (!Character.isDigit(idStr.charAt(i))) {
                         valid = false;
                         break;
                     }
                 }
+                if (!valid) {
+                    System.out.println("Invalid ID.");
+                    continue;
+                }
+                int returnedID = Integer.parseInt(idStr);
+                Book toReturn = null;
+
+                for (int i = 0; i < totalbooks; i++) {
+                    if (shelf[i].getId() == returnedID) {
+                        toReturn = shelf[i];
+                        break;
+                    }
+                }
+                if (toReturn == null || !toReturn.isCheckedOut()) {
+                    System.out.println("that book isn't checked out.");
+                    continue;
+                }
+                toReturn.checkIn();
+                System.out.println("Book returned");
 
             }
+            
         }
+
+        scanner.close();
 
 
 
